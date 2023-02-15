@@ -16,22 +16,28 @@
         <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
 
         <button class="btn" onclick="onUploadImg()">Upload Image</button>
-
-        <select name="selectShape" id="" onchange="onSelectShape(this.value)">
-            <option value="triangle">Triangle</option>
            
         </select>
         <form class="txt-inputs-container" oninput="getTxtInfo()">
             <label for="txt">Enter a txt</label>
             <input type="text" name="txt" id="txt" placeholder="txt" class="txt" />
             <label for="font">Enter a font</label>
-            <select type="text" name="font" id="font" placeholder="font" class="font" >
-                <option>arial</option>
+            <select  name="selectFont" id="font" placeholder="font" class="font" >
+                <option value="Arial">Arial</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Lucida Console">Lucida Console</option>
+                <option value="Papyrus">Papyrus</option>
+                <option value="Garamond">Garamond</option>
+                <option value="Monaco">Monaco</option>
+                <option value="Copperplate">Copperplate</option>
+                <option value="Lucida Handwriting">Lucida Handwriting</option>
             </select> 
 
             <label for="font-size">Enter a font size</label>
             <input type="number" name="font-size" id="font-size" placeholder="font-size" class="font-size" value="60" />
             <input type="color" name="color" id="color" class="color" value= '#000000' />
+            <button class="clear-btn" onclick="onClearText()">❌</button>
         </form>
         <button onclick="saveCanvas()">Save</button>
         <button onclick="clearCanvas()">Clear</button>
@@ -61,6 +67,7 @@
         </div>
     </div>
 	<script src="js/memeController.js"></script>
+	<script src="js/memeService.js"></script>
 	<script src="js/loadFromInput.js"></script>
 	<script src="js/download.js"></script>
 	<script src="js/upload.js"></script>

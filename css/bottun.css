@@ -16,3 +16,12 @@ button:hover {
 	border: 2px solid var(--clrbase);
 }
 
+button .clear-btn{
+	background-color: rgb(144, 134, 144);
+	cursor: pointer;
+	
+	font-size: 1em;
+	padding: 0.625em 1.625em;
+
+	position: absolute
+}
