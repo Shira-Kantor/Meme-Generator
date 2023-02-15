@@ -15,6 +15,8 @@ function onInit() {
   // addListeners()
   renderMeme()
   renderCanvas()
+  renderGallery()
+  drawImg(4)
   // resizeCanvas()
 
 }
@@ -64,7 +66,7 @@ function renderCanvas() {
 }
 
 function drawText(x, y, size, color, txt, font) {
-  gCtx.beginPath()
+  // gCtx.beginPath()
   gCtx.lineWidth = 1
   gCtx.strokeStyle = 'white'
   gCtx.fillStyle = color
@@ -83,8 +85,9 @@ function getTxtInfo() {
   const font = document.querySelector('.font').value
   const textSize = document.querySelector('.font-size').value
   const textColor = document.querySelector('.color').value
-  drawText(100, 100, textSize, textColor, txt, font)
-  return (txt, textSize, font, textColor )
+  // drawText(100, 100, textSize, textColor, txt, font)
+  textInfo(txt, textSize, font, textColor) 
+
   // let aaa = getMeme()
   // console.log('gMeme',aaa)
   // console.log('getTxtInfo()',txt, font, fontSize, fontColor)
@@ -99,18 +102,33 @@ function clearCanvas() {
   // gCtx.clearRect(0, 0, gElCanvas.width / 2, gElCanvas.height / 2)
 }
 
-function renderMeme(img) {
+function renderMeme(imgId) {
   // Draw the img on the canvas
+  
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-  drawImg()
+  drawImg(imgId)
+  // drawText()
   
 }
 
-function drawImg() {
+function drawImg(idx) {
   const img = new Image() // Create a new html img element
-  img.src = 'img/4.jpg' // Send a network req to get that image, define the img src
+  img.src = `img/${idx}.jpg` // Send a network req to get that image, define the img src
   // When the image ready draw it on the canvas
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height) // Draws the specified image
   }
+}
+
+function renderGallery(){
+  // let elGallery = document.querySelector('.image-continer')
+  let strHtml = gImgs.map(img=>`
+  <button class="img img${img.id}"  onclick="onImgSelect(${img.id})" ><img src="img/${img.id}.jpg"></button>
+  `)
+  document.querySelector('.image-continer').innerHTML= strHtml.join('')
+}
+
+function onImgSelect(imgId){
+setImg(imgId)
+renderMeme(imgId)
 }

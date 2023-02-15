@@ -14,17 +14,24 @@ var gImgs = [
   {id:10, url: 'img/10.jpg', keywords: ['smile','obama']},
 
 ]
-var textInfo = getTxtInfo()
-console.log('textInfo',textInfo)
+function textInfo(txt, textSize, font, textColor) {
+    gMeme.lines[0].txt = txt
+    gMeme.lines[0].textSize = textSize
+    gMeme.lines[0].font = font
+    gMeme.lines[0].textColor = textColor
+   console.log('gMeme',gMeme)
+   drawText(100, 100, textSize, textColor, txt, font)
+}
+
 var gMeme = {
     selectedImagId: 1,
     selectedLineIdx: 0,
     lines: [
         {
-            txt,
+            txt: 'ttt',
             font,
             textSize:34,
-            align: 'left',
+            align: 'center',
             textColor: 'red'
         }
     ]
