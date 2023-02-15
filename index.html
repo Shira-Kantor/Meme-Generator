@@ -12,41 +12,41 @@
 
 <body onload="onInit()">
     <h1>Meme Generator</h1>
-    <section class="bar">
-        <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
-
-        <button class="btn" onclick="onUploadImg()">Upload Image</button>
-           
-        </select>
-        <form class="txt-inputs-container" oninput="getTxtInfo()">
-            <label for="txt">Enter a txt</label>
-            <input type="text" name="txt" id="txt" placeholder="txt" class="txt" />
-            <label for="font">Enter a font</label>
-            <select  name="selectFont" id="font" placeholder="font" class="font" >
-                <option value="Impact">Impact</option>
-                <option value="Arial">Arial</option>
-                <option value="Verdana">Verdana</option>
-                <option value="Times New Roman">Times New Roman</option>
-                <option value="Lucida Console">Lucida Console</option>
-                <option value="Papyrus">Papyrus</option>
-                <option value="Garamond">Garamond</option>
-                <option value="Monaco">Monaco</option>
-                <option value="Copperplate">Copperplate</option>
-                <option value="Lucida Handwriting">Lucida Handwriting</option>
-            </select> 
-
-            <label for="font-size">Enter a font size</label>
-            <input type="number" name="font-size" id="font-size" placeholder="font-size" class="font-size" value="60" />
-            <input type="color" name="color" id="color" class="color" value= '#000000' />
-            <button class="clear-btn" onclick="onClearText()">❌</button>
-        </form>
-        <button onclick="saveCanvas()">Save</button>
-        <button onclick="clearCanvas()">Clear</button>
-        <!-- when click the link run downloadCanvas -->
-        <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>
-    </section>
     <hr />
     <div class="canvas-container">
+        <section class="bar">
+            <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+    
+            <button class="btn" onclick="onUploadImg()">Upload Image</button>
+               
+            </select>
+            <form class="txt-inputs-container" oninput="getTxtInfo()">
+                <label for="txt">Enter a txt</label>
+                <input type="text" name="txt" id="txt" placeholder="txt" class="txt" />
+                <label for="font">Enter a font</label>
+                <select  name="selectFont" id="font" placeholder="font" class="font" >
+                    <option value="Impact">Impact</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Lucida Console">Lucida Console</option>
+                    <option value="Papyrus">Papyrus</option>
+                    <option value="Garamond">Garamond</option>
+                    <option value="Monaco">Monaco</option>
+                    <option value="Copperplate">Copperplate</option>
+                    <option value="Lucida Handwriting">Lucida Handwriting</option>
+                </select> 
+    
+                <label for="font-size">Enter a font size</label>
+                <input type="number" name="font-size" id="font-size" placeholder="font-size" class="font-size" value="60" />
+                <input type="color" name="color" id="color" class="color" value= '#000000' />
+                <button class="clear-btn" onclick="onClearText()">❌</button>
+            </form>
+            <button onclick="saveCanvas()">Save</button>
+            <button onclick="clearCanvas()">Clear</button>
+            <!-- when click the link run downloadCanvas -->
+           <button> <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a></button>
+        </section>
         <canvas id="my-canvas" height="450" width="450"> </canvas>
 
     </div>

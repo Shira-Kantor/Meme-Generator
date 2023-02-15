@@ -14,21 +14,13 @@ var gImgs = [
   {id:10, url: 'img/10.jpg', keywords: ['smile','obama']},
 
 ]
-function textInfo(txt, textSize, font, textColor) {
-    gMeme.lines[0].txt = txt
-    gMeme.lines[0].textSize = textSize
-    gMeme.lines[0].font = font
-    gMeme.lines[0].textColor = textColor
-   console.log('gMeme',gMeme)
-   drawText(100, 100, textSize, textColor, txt, font)
-}
 
 var gMeme = {
     selectedImagId: 1,
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'ttt',
+            txt,
             font,
             textSize:34,
             align: 'center',
@@ -37,6 +29,24 @@ var gMeme = {
     ]
 }
 
+function setImg(imgId){
+    gMeme.selectedImagId = imgId
+    gMeme.selectedLineIdx = imgId-1
+    console.log('gMeme',gMeme)
+}
+
+function textInfo(txt, textSize, font, textColor) {
+    gMeme.lines[0].txt = txt
+    gMeme.lines[0].textSize = textSize
+    gMeme.lines[0].font = font
+    gMeme.lines[0].textColor = textColor
+   console.log('gMeme',gMeme)
+   drawText(100, 100, textSize, textColor, txt, font)
+}
 function getMeme(){
     return gMeme
+}
+
+function saveCanvas(){
+
 }

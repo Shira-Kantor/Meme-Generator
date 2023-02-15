@@ -1,8 +1,7 @@
 function downloadCanvas(elLink) {
-    // Protect the image soo attacker could not download imgs from diff domain
-    const data = gCanvas.toDataURL() // For security reason you cannot do toDataUrl on tainted canvas
-    // This protects users from having private data exposed by using images
-    // to pull information from remote web sites without permission.
-    elLink.href = data
-    elLink.download = 'my-img.jpg'
-}
+    // Gets the canvas content and convert it to base64 data URL that can be save as an image
+    const data = gElCanvas.toDataURL() // Method returns a data URL containing a representation of the image in the format specified by the type parameter.
+    // console.log('data', data) // Decoded the image to base64
+    elLink.href = data // Put it on the link
+    elLink.download = 'my-img' // Can change the name of the file
+  }
