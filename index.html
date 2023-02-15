@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bottun.css" />
+    <title>Meme Generator</title>
+</head>
+
+<body onload="onInit()">
+    <h1>Meme Generator</h1>
+    <section class="bar">
+        <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+
+        <button class="btn" onclick="onUploadImg()">Upload Image</button>
+
+        <select name="selectShape" id="" onchange="onSelectShape(this.value)">
+            <option value="triangle">Triangle</option>
+           
+        </select>
+        <form class="txt-inputs-container" oninput="getTxtInfo()">
+            <label for="txt">Enter a txt</label>
+            <input type="text" name="txt" id="txt" placeholder="txt" class="txt" />
+            <label for="font">Enter a font</label>
+            <select type="text" name="font" id="font" placeholder="font" class="font" >
+                <option>arial</option>
+            </select> 
+
+            <label for="font-size">Enter a font size</label>
+            <input type="number" name="font-size" id="font-size" placeholder="font-size" class="font-size" value="60" />
+            <input type="color" name="color" id="color" class="color" value= '#000000' />
+        </form>
+        <button onclick="saveCanvas()">Save</button>
+        <button onclick="clearCanvas()">Clear</button>
+        <!-- when click the link run downloadCanvas -->
+        <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>
+    </section>
+    <hr />
+    <div class="canvas-container">
+        <canvas id="my-canvas" height="450" width="450"> </canvas>
+
+        <div class="image-continer">
+            <img class="img img1" src="img/1.jpg" alt="">
+            <img class="img img2" src="img/2.jpg" alt="">
+            <img class="img img3" src="img/3.jpg" alt="">
+            <img class="img img4" src="img/4.jpg" alt="">
+            <img class="img img5" src="img/5.jpg" alt="">
+            <img class="img img6" src="img/6.jpg" alt="">
+            <img class="img img7" src="img/7.jpg" alt="">
+            <img class="img img8" src="img/8.jpg" alt="">
+            <img class="img img9" src="img/9.jpg" alt="">
+            <img class="img img10" src="img/10.jpg" alt="">
+            <img class="img img12" src="img/12.jpg" alt="">
+            <img class="img img13" src="img/13.jpg" alt="">
+            <img class="img img14" src="img/14.jpg" alt="">
+            <img class="img img15" src="img/15.jpg" alt="">
+            <img class="img img16" src="img/16.jpg" alt="">
+        </div>
+    </div>
+	<script src="js/memeController.js"></script>
+	<script src="js/loadFromInput.js"></script>
+	<script src="js/download.js"></script>
+	<script src="js/upload.js"></script>
+</body>
+
+</html>

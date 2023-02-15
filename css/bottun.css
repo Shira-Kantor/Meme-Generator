@@ -1,0 +1,18 @@
+/* round buttons */
+
+button {
+	background-color: purple;
+	color: wheat;
+	cursor: pointer;
+	border: 2px solid black;
+	font-size: 1em;
+	padding: 0.625em 1.625em;
+
+	position: relative;
+}
+
+button:hover {
+	color: var(--clrbase);
+	border: 2px solid var(--clrbase);
+}
+
