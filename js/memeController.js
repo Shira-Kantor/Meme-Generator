@@ -133,9 +133,16 @@ function drawImg(meme) {
   // When the image ready draw it on the canvas
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+    
+    // gCtx.strokeStyle = 'black'
+    // drawRect(meme.lines[0].pos.x, meme.lines[0].pos.y, meme.lines[0].textSize)
     drawText(meme.lines[0].pos.x, meme.lines[0].pos.y, meme.lines[0].textSize, meme.lines[0].textColor, meme.lines[0].txt, meme.lines[0].font)
     drawText(meme.lines[1].pos.x, meme.lines[1].pos.y, meme.lines[0].textSize, meme.lines[0].textColor, meme.lines[1].txt, meme.lines[1].font)
   }
+}
+function drawRect(x, y) {
+  gCtx.strokeStyle = 'black'
+  gCtx.strokeRect(x, y, x+1, 120)
 }
 
 function renderGallery() {
@@ -189,4 +196,10 @@ function addRow() {
   // let currMeme = getMeme()
   // drawText(300, 300, currMeme.lines[0].textSize, currMeme.lines[0].color, txt, currMeme.lines[0].font)
   console.log('text', text)
+}
+var gIsHidden = true
+function onAbout(){
+  // document.querySelector('.about').hidden = gIsHidden
+  gIsHidden = false
+ 
 }

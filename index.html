@@ -13,11 +13,16 @@
 <body onload="onInit()">
     <h1>Meme Generator</h1>
     <nav>
-        <button>Logo</button>
+        <!-- <button>Logo</button> -->
         <button onclick="toggleContiner(false)">Main</button>
-        <button>About</button>
-
+        <button onclick="onAbout()">About</button>
     </nav>
+    <p class="about" hidden>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut enim minus consequatur voluptas, autem cumque optio tempore ratione
+        blanditiis, odio perferendis sed fugiat eveniet cupiditate illo sunt vel ad repellat rerum accusamus nisi asperiores obcaecati.
+         Perferendis vel laboriosam deleniti unde consequatur earum vero nulla obcaecati! Deleniti eligendi debitis et eos accusantium 
+         totam nam optio, facere impedit cum, fuga placeat, id repellat laudantium? Dolore, fugit repellendus dolorem nulla illum eveniet
+          sapiente, provident, esse cumque
+        eum similique ipsum consequuntur dignissimos adipisci qui reprehenderit pariatur ea dicta velit voluptas aut atque maxime distinctio.</p>
     <div class="canvas-container" hidden>
         <div class="nav-bar">
             <section class="txt-inputs-container" oninput="getTxtInfo()">
@@ -68,7 +73,7 @@
                 <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>
             </section>
         </div>
-        <canvas id="my-canvas" height="450" width="450"> </canvas>
+        <canvas id="my-canvas" height="700" width="700"> </canvas>
 
     </div>
     <div class="image-continer">

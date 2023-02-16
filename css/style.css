@@ -7,10 +7,13 @@ html {
 }
 
 body {
-	color: plums;
-	font-size: 16px;
+	color: rgb(169, 14, 94);
+	font-size: 36px;
 	line-height: 1.5;
+  text-align: center;
+  font-family:Georgia, 'Times New Roman', Times, serif;
 	margin: 0px;
+  background-image: url("/img/bg2.jpg");
 }
 
 canvas {
@@ -21,7 +24,7 @@ canvas {
   }
   
   .canvas-container {
-    background-color: rgb(222, 189, 189);
+    background-image: url("/img/bg.jpg");
     margin: auto;
     width: 90vw;
     height: 90vh;
@@ -35,29 +38,16 @@ canvas {
     width: 100%;
   }
 
-body {
-  text-align: center;
-}  
-
 img {
 	width: 100%;
 }
 
 a {
-	
 	text-decoration: none;
+  color: rgb(170, 26, 172);
 }
 
-button {
-	background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-  
-}
+
 
 .image-continer{
     /* display: flex; */
@@ -74,8 +64,8 @@ button {
 }
 
 img{
-    height: 400px;
-    width: 400px;
+    height: auto;
+    width: auto;
 }
 .nav-bar{
   display: grid;
