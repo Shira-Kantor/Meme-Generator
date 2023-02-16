@@ -12,19 +12,37 @@
 
 <body onload="onInit()">
     <h1>Meme Generator</h1>
-    <hr />
-    <div class="canvas-container">
-        <section class="bar">
-            <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
-    
-            <button class="btn" onclick="onUploadImg()">Upload Image</button>
-               
-            </select>
-            <form class="txt-inputs-container" oninput="getTxtInfo()">
+    <nav>
+        <button>Logo</button>
+        <button onclick="toggleContiner(false)">Main</button>
+        <button>About</button>
+
+    </nav>
+    <div class="canvas-container" hidden>
+        <div class="nav-bar">
+            <section class="txt-inputs-container" oninput="getTxtInfo()">
+                </select>
                 <label for="txt">Enter a txt</label>
                 <input type="text" name="txt" id="txt" placeholder="txt" class="txt" />
+                <!--               
+                    <button class="add-line" onclick="toggleInputs(false)">+</button>
+                    <form class="second-line">
+                        <label for="txt">Enter a txt</label>
+                        <input type="text" name="txt" id="txt" placeholder="txt" class="new-txt" />
+                    </form> -->
+                    <button class="add-line" onclick="toggleInputs(false)">+</button>
+                    <section class="second-line" hidden>
+                        <label for="new-txt">Enter a txt</label>
+                        <input oninput="addRow()" type="text" name="new-txt" id="new-txt" placeholder="new-txt" class="new-txt" />
+                        <button class="switch-lines" onclick="onSwitch()"> ↕ </button>
+                    </section>
+                    <br>
+                    <button class="move-txt" onclick="onMoveLineDown()">↓</button>
+                    <button class="move-txt" onclick="onMoveLineUp()">↑</button>
+                    <button class="move-txt" onclick="onMoveLineRight()">→</button>
+                    <button class="move-txt" onclick="onMoveLineLeft()"> ← </button>
                 <label for="font">Enter a font</label>
-                <select  name="selectFont" id="font" placeholder="font" class="font" >
+                <select name="selectFont" id="font" placeholder="font" class="font">
                     <option value="Impact">Impact</option>
                     <option value="Arial">Arial</option>
                     <option value="Verdana">Verdana</option>
@@ -35,43 +53,32 @@
                     <option value="Monaco">Monaco</option>
                     <option value="Copperplate">Copperplate</option>
                     <option value="Lucida Handwriting">Lucida Handwriting</option>
-                </select> 
-    
+                </select>
                 <label for="font-size">Enter a font size</label>
-                <input type="number" name="font-size" id="font-size" placeholder="font-size" class="font-size" value="60" />
-                <input type="color" name="color" id="color" class="color" value= '#000000' />
+                <input type="number" name="font-size" id="font-size" placeholder="font-size" class="font-size"
+                    value="60" />
+                <input type="color" name="color" id="color" class="color" value='#ffffff' />
+
+                <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+                <button class="btn" onclick="onUploadImg(event)">Upload Image</button>
                 <button class="clear-btn" onclick="onClearText()">❌</button>
-            </form>
-            <button onclick="saveCanvas()">Save</button>
-            <button onclick="clearCanvas()">Clear</button>
-            <!-- when click the link run downloadCanvas -->
-           <button> <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a></button>
-        </section>
+                <button onclick="saveCanvas()">Save</button>
+                <button onclick="clearCanvas()">Clear</button>
+                <!-- when click the link run downloadCanvas -->
+                <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>
+            </section>
+        </div>
         <canvas id="my-canvas" height="450" width="450"> </canvas>
 
     </div>
     <div class="image-continer">
-        <!-- <img class="img img1" src="img/1.jpg" alt="">
-        <img class="img img2" src="img/2.jpg" alt="">
-        <img class="img img3" src="img/3.jpg" alt="">
-        <img class="img img4" src="img/4.jpg" alt="">
-        <img class="img img5" src="img/5.jpg" alt="">
-        <img class="img img6" src="img/6.jpg" alt="">
-        <img class="img img7" src="img/7.jpg" alt="">
-        <img class="img img8" src="img/8.jpg" alt="">
-        <img class="img img9" src="img/9.jpg" alt="">
-        <img class="img img10" src="img/10.jpg" alt="">
-        <img class="img img12" src="img/12.jpg" alt="">
-        <img class="img img13" src="img/13.jpg" alt="">
-        <img class="img img14" src="img/14.jpg" alt="">
-        <img class="img img15" src="img/15.jpg" alt="">
-        <img class="img img16" src="img/16.jpg" alt=""> -->
     </div>
-	<script src="js/memeController.js"></script>
-	<script src="js/memeService.js"></script>
-	<script src="js/loadFromInput.js"></script>
-	<script src="js/download.js"></script>
-	<script src="js/upload.js"></script>
+    <script src="js/memeController.js"></script>
+    <script src="js/memeService.js"></script>
+    <script src="js/loadFromInput.js"></script>
+    <script src="js/download.js"></script>
+    <script src="js/upload.js"></script>
+    <script src="js/localStorage.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 // The next 2 functions handle IMAGE UPLOADING to img tag from file system:
-function onImgInput(ev) {
+function onImgInput(ev){
+ev.preventDefault() 
   loadImageFromInput(ev, renderImg)
 }
 
