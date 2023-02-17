@@ -19,7 +19,7 @@ body {
 canvas {
     display: block;
     margin: auto;
-    background-color: rgb(197, 35, 35);
+    background-color: rgb(86, 186, 216);
     border: 1px solid black;
   }
   
@@ -29,6 +29,7 @@ canvas {
     width: 90vw;
     height: 90vh;
     position: relative;
+    
   }
   .canvas-container p {
     position: absolute;
@@ -45,9 +46,8 @@ img {
 a {
 	text-decoration: none;
   color: rgb(170, 26, 172);
+  
 }
-
-
 
 .image-continer{
     /* display: flex; */
@@ -61,6 +61,7 @@ a {
     gap: 10px;
     width: 80vw;
     height: 80vh;
+    position: relative;
 }
 
 img{

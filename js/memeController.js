@@ -6,6 +6,7 @@ let gElCanvas
 let gCtx
 let gLastPos = { x: null, y: null }
 let gIsDrag
+let gSelectedLineIdx = 0
 
 
 function onInit() {
@@ -38,7 +39,8 @@ function addListeners() {
 function onClearText() {
   // ev.preventDefault()
   document.querySelector('.txt').value = ''
-  clearText()
+
+  clearText(gSelectedLineIdx)
   renderMeme()
   // drawText(100, 100, 0, 'red', ' ', arial)
 }
@@ -84,17 +86,18 @@ function drawText(x, y, size, color, txt, font) {
 
   gCtx.fillText(txt, x, y) // Draws (fills) a given text at the given (x, y) position.
   gCtx.strokeText(txt, x, y) // Draws (strokes) a given text at the given (x, y) position.
+  
 
 
 }
 // const { txt, font, fontSize,fontColor } = getTxtInfo()
 function getTxtInfo() {
-
-  const txt = document.querySelector('.txt').value
+  // const txt =  document.querySelector('.txt').value 
+  const txt = (gSelectedLineIdx===0) ? document.querySelector('.txt').value : document.querySelector('.new-txt').value
   const font = document.querySelector('.font').value
   const textSize = document.querySelector('.font-size').value
   const textColor = document.querySelector('.color').value
-  textInfo(textSize, textColor, txt, font)
+  textInfo(gSelectedLineIdx,textSize, textColor, txt, font)
   renderMeme()
 }
 
@@ -137,44 +140,51 @@ function drawImg(meme) {
     // gCtx.strokeStyle = 'black'
     // drawRect(meme.lines[0].pos.x, meme.lines[0].pos.y, meme.lines[0].textSize)
     drawText(meme.lines[0].pos.x, meme.lines[0].pos.y, meme.lines[0].textSize, meme.lines[0].textColor, meme.lines[0].txt, meme.lines[0].font)
-    drawText(meme.lines[1].pos.x, meme.lines[1].pos.y, meme.lines[0].textSize, meme.lines[0].textColor, meme.lines[1].txt, meme.lines[1].font)
+    drawText(meme.lines[1].pos.x, meme.lines[1].pos.y, meme.lines[1].textSize, meme.lines[1].textColor, meme.lines[1].txt, meme.lines[1].font)
+   
+    // gCtx.strokeRect(meme.lines[0].pos.x-10,meme.lines[0].pos.y-10,meme.lines[0].textSize+10,meme.lines[0].pos.y-10)
+    // drawRect(meme.lines[0].pos.x, meme.lines[0].pos.y)
   }
 }
+
 function drawRect(x, y) {
   gCtx.strokeStyle = 'black'
-  gCtx.strokeRect(x, y, x+1, 120)
+  gCtx.strokeRect(x, y, x+10, y)
 }
 
 function renderGallery() {
   // let elGallery = document.querySelector('.image-continer')
   let strHtml = gImgs.map(img => `
-  <button class="img img${img.id}"  onclick="onImgSelect(${img.id})" >
+  <button class="img img${img.id}"  onclick="onImgSelect(${img.id})" show>
   <img src="img/${img.id}.jpg">
   </button>
   `).join('')
   document.querySelector('.image-continer').innerHTML = strHtml
+  document.querySelector('.image-continer').style.display = 'block'
 }
 
 function onImgSelect(imgId) {
   setImg(imgId)
   renderMeme()
   toggleContiner(true)
+  document.querySelector('.image-continer').style.display='none'
+  // document.querySelector('.image-continer').hidden= false
 }
 
 function onMoveLineDown() {
-  moveLineDown()
+  moveLineDown(gSelectedLineIdx)
   renderMeme()
 }
 function onMoveLineUp() {
-  moveLineUp()
+  moveLineUp(gSelectedLineIdx)
   renderMeme()
 }
 function onMoveLineRight() {
-  moveLineRight()
+  moveLineRight(gSelectedLineIdx)
   renderMeme()
 }
 function onMoveLineLeft() {
-  moveLineLeft()
+  moveLineLeft(gSelectedLineIdx)
   renderMeme()
 }
 function onSwitch() {
@@ -183,7 +193,8 @@ function onSwitch() {
 }
 function toggleContiner(isHide) {
   document.querySelector('.canvas-container').hidden = !isHide
-  document.querySelector('.image-continer').hidden = isHide
+  // document.querySelector('.image-continer').hidden = isHide
+  renderGallery()
 }
 function toggleInputs(isHidden) {
   document.querySelector('.second-line').hidden = isHidden
@@ -191,7 +202,11 @@ function toggleInputs(isHidden) {
 
 function addRow() {
   let text = document.querySelector('.new-txt').value
-  addingRow(text)
+  const font = document.querySelector('.font').value
+  const textSize = document.querySelector('.font-size').value
+  const textColor = document.querySelector('.color').value
+  addingRow(text,font,textSize,textColor)
+  gSelectedLineIdx=1
   renderMeme()
   // let currMeme = getMeme()
   // drawText(300, 300, currMeme.lines[0].textSize, currMeme.lines[0].color, txt, currMeme.lines[0].font)

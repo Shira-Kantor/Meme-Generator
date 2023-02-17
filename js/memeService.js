@@ -48,12 +48,12 @@ function clearText() {
     // renderMeme()
     saveToStorage()
 }
-function textInfo(textSize, textColor, txt, font) {
-    gMeme.lines[0].txt = txt
+function textInfo(selectedLineIdx,textSize, textColor, txt, font) {
+    gMeme.lines[selectedLineIdx].txt = txt
     // console.log('gMeme.lines[0].txt = txt', gMeme.lines[0].txt = txt)
-    gMeme.lines[0].textSize = textSize
-    gMeme.lines[0].font = font
-    gMeme.lines[0].textColor = textColor
+    gMeme.lines[selectedLineIdx].textSize = textSize
+    gMeme.lines[selectedLineIdx].font = font
+    gMeme.lines[selectedLineIdx].textColor = textColor
     console.log('gMeme', gMeme)
     saveToStorage(gMeme, gMeme)
     //    drawText(100,100, textSize, textColor, txt,font)
@@ -63,26 +63,29 @@ function getMeme() {
     return gMeme
 }
 
-function addingRow(txt){
+function addingRow(txt,font,textSize,textColor){
     gMeme.lines[1].txt = txt
-   console.log('gMeme.lines[1].txt = txt',gMeme.lines[1].txt = txt)
+    gMeme.lines[1].textSize = textSize
+    gMeme.lines[1].font = font
+    gMeme.lines[1].textColor = textColor
+//    console.log('gMeme.lines[1].txt = txt',gMeme.lines[1].txt = txt)
     saveToStorage(gMeme,gMeme)
 }
-function clearText(){
-    gMeme.lines[0].txt = ' '
+function clearText(selectedLineIdx){
+    gMeme.lines[selectedLineIdx].txt = ' '
 }
 
-function moveLineDown(){
-    gMeme.lines[0].pos.y += 50
+function moveLineDown(selectedLineIdx){
+    gMeme.lines[selectedLineIdx].pos.y += 50
 }
-function moveLineUp(){
-    gMeme.lines[0].pos.y -= 50
+function moveLineUp(selectedLineIdx){
+    gMeme.lines[selectedLineIdx].pos.y -= 50
 }
-function moveLineRight(){
-    gMeme.lines[0].pos.x += 50
+function moveLineRight(selectedLineIdx){
+    gMeme.lines[selectedLineIdx].pos.x += 50
 }
-function moveLineLeft(){
-    gMeme.lines[0].pos.x -= 50
+function moveLineLeft(selectedLineIdx){
+    gMeme.lines[selectedLineIdx].pos.x -= 50
 }
 function SwitchLines(){
     let fisstTxt = gMeme.lines[0].txt

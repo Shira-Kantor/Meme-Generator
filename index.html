@@ -37,7 +37,7 @@
                     </form> -->
                     <button class="add-line" onclick="toggleInputs(false)">+</button>
                     <section class="second-line" hidden>
-                        <label for="new-txt">Enter a txt</label>
+                        <label for="new-txt">Enter more txt</label>
                         <input oninput="addRow()" type="text" name="new-txt" id="new-txt" placeholder="new-txt" class="new-txt" />
                         <button class="switch-lines" onclick="onSwitch()"> ↕ </button>
                     </section>
@@ -66,9 +66,9 @@
 
                 <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
                 <button class="btn" onclick="onUploadImg(event)">Upload Image</button>
-                <button class="clear-btn" onclick="onClearText()">❌</button>
+                <button class="clear-btn" onclick="onClearText()">Clear</button>
                 <button onclick="saveCanvas()">Save</button>
-                <button onclick="clearCanvas()">Clear</button>
+                <button onclick="clearCanvas()">❌</button>
                 <!-- when click the link run downloadCanvas -->
                 <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>
             </section>
