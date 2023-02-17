@@ -87,11 +87,27 @@ function moveLineRight(selectedLineIdx){
 function moveLineLeft(selectedLineIdx){
     gMeme.lines[selectedLineIdx].pos.x -= 50
 }
-function SwitchLines(){
-    let fisstTxt = gMeme.lines[0].txt
+function SwitchLines(selectedLineIdx){
+    // if(selectedLineIdx===0)
+    let firstTxt = gMeme.lines[0].txt
+    let firsttextSize = gMeme.lines[0].textSize
+    let firsttextColor = gMeme.lines[0].textColor
+    let firstfont = gMeme.lines[0].font
+
     let secondTxt = gMeme.lines[1].txt
+    let secondtextSize = gMeme.lines[1].textSize
+    let secondtextColor = gMeme.lines[1].textColor
+    let secondfont = gMeme.lines[1].font
+
     gMeme.lines[0].txt = secondTxt
-    gMeme.lines[1].txt = fisstTxt
+    gMeme.lines[0].textSize = secondtextSize
+    gMeme.lines[0].textColor = secondtextColor
+    gMeme.lines[0].font = secondfont
+
+    gMeme.lines[1].txt = firstTxt
+    gMeme.lines[1].textSize = firsttextSize
+    gMeme.lines[1].textColor = firsttextColor
+    gMeme.lines[1].font = firstfont
 }
 // function saveCanvas(){
 

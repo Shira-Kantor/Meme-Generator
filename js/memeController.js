@@ -188,7 +188,7 @@ function onMoveLineLeft() {
   renderMeme()
 }
 function onSwitch() {
-  SwitchLines()
+  SwitchLines(gSelectedLineIdx)
   renderMeme()
 }
 function toggleContiner(isHide) {
