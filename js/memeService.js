@@ -2,16 +2,25 @@
 
 var gKeywordSearchCountMap = { 'funny': 6, 'kids': 4, 'baby': 3 }
 var gImgs = [
-    { id: 1, url: 'img/1.jpg', keywords: ['hand', 'trump'] },
-    { id: 2, url: 'img/2.jpg', keywords: ['cute', 'dog'] },
-    { id: 3, url: 'img/3.jpg', keywords: ['baby', 'dog'] },
-    { id: 4, url: 'img/4.jpg', keywords: ['cat'] },
-    { id: 5, url: 'img/5.jpg', keywords: ['baby', 'hand'] },
-    { id: 6, url: 'img/6.jpg', keywords: ['hands'] },
-    { id: 7, url: 'img/7.jpg', keywords: ['baby', 'eyes'] },
-    { id: 8, url: 'img/8.jpg', keywords: ['hat', 'eyes'] },
-    { id: 9, url: 'img/9.jpg', keywords: ['kids', 'hands'] },
-    { id: 10, url: 'img/10.jpg', keywords: ['smile', 'obama'] },
+    { id: 1, url: 'img/1.jpg', keywords: ['hand', 'trump','men'] },
+    { id: 2, url: 'img/2.jpg', keywords: ['cute', 'dog','kiss'] },
+    { id: 3, url: 'img/3.jpg', keywords: ['baby', 'dog','sleep'] },
+    { id: 4, url: 'img/4.jpg', keywords: ['cat','cute','keyboard'] },
+    { id: 5, url: 'img/5.jpg', keywords: ['baby', 'hand','right'] },
+    { id: 6, url: 'img/6.jpg', keywords: ['hands','big','men'] },
+    { id: 7, url: 'img/7.jpg', keywords: ['baby', 'eyes','shuk'] },
+    { id: 8, url: 'img/8.jpg', keywords: ['hat', 'eyes','men'] },
+    { id: 9, url: 'img/9.jpg', keywords: ['kids', 'hands','sneaky'] },
+    { id: 10, url: 'img/10.jpg', keywords: ['smile', 'obama','men'] },
+    { id: 12, url: 'img/12.jpg', keywords: ['rigth', 'Hecht','men'] },
+    { id: 13, url: 'img/13.jpg', keywords: ['cheers', 'Brad Pitt','men'] },
+    { id: 14, url: 'img/14.jpg', keywords: ['cool', 'sunglasses','men'] },
+    { id: 15, url: 'img/15.jpg', keywords: ['hand', 'zero','men'] },
+    { id: 16, url: 'img/16.jpg', keywords: ['smile', 'laugh','giggle'] },
+    { id: 17, url: 'img/17.jpg', keywords: ['Putin', 'hand','two'] },
+    { id: 18, url: 'img/18.jpg', keywords: ['Toy Story', 'Woody','Buzz Lightyear'] },
+  
+
 
 ]
 
@@ -28,7 +37,7 @@ var gMeme = {
             textColor: 'red'
         },
         {
-            pos: { x: 100, y: 300 },
+            pos: { x: 100, y: 600 },
             txt: '',
             font,
             textSize: 34,
@@ -47,6 +56,9 @@ function clearText() {
     gMeme.lines[0].splice(line, 1)
     // renderMeme()
     saveToStorage()
+}
+function getImgs(){
+    return gImgs
 }
 function textInfo(selectedLineIdx,textSize, textColor, txt, font) {
     gMeme.lines[selectedLineIdx].txt = txt
@@ -109,6 +121,8 @@ function SwitchLines(selectedLineIdx){
     gMeme.lines[1].textColor = firsttextColor
     gMeme.lines[1].font = firstfont
 }
-// function saveCanvas(){
-
-// }
+function searchImg(search) {
+   return gImgs.filter(img => (img.keywords[0].toLowerCase() === search.toLowerCase())||
+   (img.keywords[1].toLowerCase() === search.toLowerCase())||
+   (img.keywords[2].toLowerCase() === search.toLowerCase()))
+}

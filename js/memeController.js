@@ -85,9 +85,7 @@ function drawText(x, y, size, color, txt, font) {
   gCtx.textBaseline = 'top'
 
   gCtx.fillText(txt, x, y) // Draws (fills) a given text at the given (x, y) position.
-  gCtx.strokeText(txt, x, y) // Draws (strokes) a given text at the given (x, y) position.
-  
-
+  gCtx.strokeText(txt, x, y) // Draws (strokes) a given text at the given (x, y) position
 
 }
 // const { txt, font, fontSize,fontColor } = getTxtInfo()
@@ -100,7 +98,9 @@ function getTxtInfo() {
   textInfo(gSelectedLineIdx,textSize, textColor, txt, font)
   renderMeme()
 }
-
+function onSelectes(selectedLine){
+  gSelectedLineIdx = selectedLine
+}
 // function saveCanvas() {
 //   const { txt, font, fontSize, fontColor } = getTxtInfo()
 //   let currMeme = getMeme()
@@ -154,7 +154,8 @@ function drawRect(x, y) {
 
 function renderGallery() {
   // let elGallery = document.querySelector('.image-continer')
-  let strHtml = gImgs.map(img => `
+  // let imgs = getImgs()
+  let strHtml = imgs.map(img => `
   <button class="img img${img.id}"  onclick="onImgSelect(${img.id})" show>
   <img src="img/${img.id}.jpg">
   </button>
@@ -212,9 +213,26 @@ function addRow() {
   // drawText(300, 300, currMeme.lines[0].textSize, currMeme.lines[0].color, txt, currMeme.lines[0].font)
   console.log('text', text)
 }
-var gIsHidden = true
+
+var gIsHidden = false
 function onAbout(){
-  // document.querySelector('.about').hidden = gIsHidden
-  gIsHidden = false
+  // gIsHidden = false
+  document.querySelector('.about').hidden = gIsHidden
+   gIsHidden = true
+  
  
+ 
+}
+var imgs = getImgs()
+console.log('imgs',imgs)
+
+function onSearch(val) {
+  var search = document.querySelector('.search').value
+  // console.log('val',val)
+  // console.log('search', search)
+  // let imgs = getImgs()
+  console.log('imgs', imgs)
+  imgs = searchImg(search)
+  console.log('imgs',imgs)
+  renderGallery()
 }

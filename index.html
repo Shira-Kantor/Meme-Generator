@@ -16,6 +16,7 @@
         <!-- <button>Logo</button> -->
         <button onclick="toggleContiner(false)">Main</button>
         <button onclick="onAbout()">About</button>
+        <input class="search" type="search" name="search-meme" placeholder="search meme" oninput="onSearch(this.value)"/>
     </nav>
     <p class="about" hidden>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut enim minus consequatur voluptas, autem cumque optio tempore ratione
         blanditiis, odio perferendis sed fugiat eveniet cupiditate illo sunt vel ad repellat rerum accusamus nisi asperiores obcaecati.
@@ -28,17 +29,12 @@
             <section class="txt-inputs-container" oninput="getTxtInfo()">
                 </select>
                 <label for="txt">Enter a txt</label>
-                <input type="text" name="txt" id="txt" placeholder="txt" class="txt" />
-                <!--               
-                    <button class="add-line" onclick="toggleInputs(false)">+</button>
-                    <form class="second-line">
-                        <label for="txt">Enter a txt</label>
-                        <input type="text" name="txt" id="txt" placeholder="txt" class="new-txt" />
-                    </form> -->
+                <input onclick="onSelectes(0)" type="text" name="txt" id="txt" placeholder="txt" class="txt" />
+             
                     <button class="add-line" onclick="toggleInputs(false)">+</button>
                     <section class="second-line" hidden>
                         <label for="new-txt">Enter more txt</label>
-                        <input oninput="addRow()" type="text" name="new-txt" id="new-txt" placeholder="new-txt" class="new-txt" />
+                        <input  onclick="onSelectes(1)" oninput="addRow()" type="text" name="new-txt" id="new-txt" placeholder="new-txt" class="new-txt" />
                         <button class="switch-lines" onclick="onSwitch()"> ↕ </button>
                     </section>
                     <br>
@@ -78,8 +74,8 @@
     </div>
     <div class="image-continer">
     </div>
-    <script src="js/memeController.js"></script>
     <script src="js/memeService.js"></script>
+    <script src="js/memeController.js"></script>
     <script src="js/loadFromInput.js"></script>
     <script src="js/download.js"></script>
     <script src="js/upload.js"></script>
