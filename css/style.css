@@ -63,8 +63,9 @@ a {
 }
 
 img{
-    height: auto;
-    width: auto;
+    height: 320px;
+    width: 320px;
+    border-radius: 20px;
 }
 .nav-bar{
   display: grid;
