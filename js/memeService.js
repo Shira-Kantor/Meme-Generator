@@ -49,12 +49,12 @@ var gMeme = {
 
 function setImg(imgId) {
     gMeme.selectedImagId = imgId
-    // console.log('gMeme',gMeme)
 }
+
 function clearText() {
     gMeme.lines[0].txt = ''
     gMeme.lines[0].splice(line, 1)
-    // renderMeme()
+    renderMeme()
     saveToStorage()
 }
 function getImgs() {
@@ -62,15 +62,13 @@ function getImgs() {
 }
 function textInfo(selectedLineIdx, textSize, textColor, txt, font) {
     gMeme.lines[selectedLineIdx].txt = txt
-    // console.log('gMeme.lines[0].txt = txt', gMeme.lines[0].txt = txt)
     gMeme.lines[selectedLineIdx].textSize = textSize
     gMeme.lines[selectedLineIdx].font = font
     gMeme.lines[selectedLineIdx].textColor = textColor
     console.log('gMeme', gMeme)
     saveToStorage(gMeme, gMeme)
-    //    drawText(100,100, textSize, textColor, txt,font)
-
 }
+
 function getMeme() {
     return gMeme
 }
@@ -80,7 +78,7 @@ function addingRow(txt, font, textSize, textColor) {
     gMeme.lines[1].textSize = textSize
     gMeme.lines[1].font = font
     gMeme.lines[1].textColor = textColor
-    //    console.log('gMeme.lines[1].txt = txt',gMeme.lines[1].txt = txt)
+   
     saveToStorage(gMeme, gMeme)
 }
 function clearText(selectedLineIdx) {
@@ -130,4 +128,5 @@ function searchImg(search) {
 
 function saveImgInMeme(img) {
     gMeme['img'] = img
+    console.log('gMeme',gMeme)
 }

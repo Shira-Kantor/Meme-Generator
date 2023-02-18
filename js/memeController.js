@@ -125,17 +125,16 @@ function renderMeme() {
 }
 
 function drawImg(meme) {
-  const img = new Image()
+  var img = new Image()
   img.src = `img/${meme.selectedImagId}.jpg`
+  
+  if (meme.img)  img = saveImgInMeme(img)
 
-  if (meme.img) { img = meme.img }
-
-  img.onload = () => {
+  // img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-
     drawText(meme.lines[0].pos.x, meme.lines[0].pos.y, meme.lines[0].textSize, meme.lines[0].textColor, meme.lines[0].txt, meme.lines[0].font)
     drawText(meme.lines[1].pos.x, meme.lines[1].pos.y, meme.lines[1].textSize, meme.lines[1].textColor, meme.lines[1].txt, meme.lines[1].font)
-  }
+  // }
 }
 
 function drawRect(x, y) {
@@ -215,6 +214,6 @@ var imgs = getImgs()
 
 function onSearch(val) {
   var search = document.querySelector('.search').value
- imgs = searchImg(search)
+  imgs = searchImg(search)
   renderGallery()
 }
