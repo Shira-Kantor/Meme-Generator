@@ -91,14 +91,14 @@ function drawText(x, y, size, color, txt, font) {
 // const { txt, font, fontSize,fontColor } = getTxtInfo()
 function getTxtInfo() {
   // const txt =  document.querySelector('.txt').value 
-  const txt = (gSelectedLineIdx===0) ? document.querySelector('.txt').value : document.querySelector('.new-txt').value
+  const txt = (gSelectedLineIdx === 0) ? document.querySelector('.txt').value : document.querySelector('.new-txt').value
   const font = document.querySelector('.font').value
   const textSize = document.querySelector('.font-size').value
   const textColor = document.querySelector('.color').value
-  textInfo(gSelectedLineIdx,textSize, textColor, txt, font)
+  textInfo(gSelectedLineIdx, textSize, textColor, txt, font)
   renderMeme()
 }
-function onSelectes(selectedLine){
+function onSelectes(selectedLine) {
   gSelectedLineIdx = selectedLine
 }
 // function saveCanvas() {
@@ -120,41 +120,30 @@ function clearCanvas() {
 }
 
 function renderMeme() {
-  // Draw the img on the canvas
   let currMeme = getMeme()
-  // let currImg = currMeme.selectedImagId
   drawImg(currMeme)
-  // drawText(100,100,currMeme.lines[0].textSize,currMeme.lines[0].textColor,currMeme.lines[0].txt,currMeme.lines[0].font)
-
 }
 
 function drawImg(meme) {
-  // let meme = getMeme()
-  console.log('meme', meme)
-  const img = new Image() // Create a new html img element
-  img.src = `img/${meme.selectedImagId}.jpg` // Send a network req to get that image, define the img src
-  // When the image ready draw it on the canvas
+  const img = new Image()
+  img.src = `img/${meme.selectedImagId}.jpg`
+
+  if (meme.img) { img = meme.img }
+
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    
-    // gCtx.strokeStyle = 'black'
-    // drawRect(meme.lines[0].pos.x, meme.lines[0].pos.y, meme.lines[0].textSize)
+
     drawText(meme.lines[0].pos.x, meme.lines[0].pos.y, meme.lines[0].textSize, meme.lines[0].textColor, meme.lines[0].txt, meme.lines[0].font)
     drawText(meme.lines[1].pos.x, meme.lines[1].pos.y, meme.lines[1].textSize, meme.lines[1].textColor, meme.lines[1].txt, meme.lines[1].font)
-   
-    // gCtx.strokeRect(meme.lines[0].pos.x-10,meme.lines[0].pos.y-10,meme.lines[0].textSize+10,meme.lines[0].pos.y-10)
-    // drawRect(meme.lines[0].pos.x, meme.lines[0].pos.y)
   }
 }
 
 function drawRect(x, y) {
   gCtx.strokeStyle = 'black'
-  gCtx.strokeRect(x, y, x+10, y)
+  gCtx.strokeRect(x, y, x + 10, y)
 }
 
 function renderGallery() {
-  // let elGallery = document.querySelector('.image-continer')
-  // let imgs = getImgs()
   let strHtml = imgs.map(img => `
   <button class="img img${img.id}"  onclick="onImgSelect(${img.id})" show>
   <img src="img/${img.id}.jpg">
@@ -168,35 +157,39 @@ function onImgSelect(imgId) {
   setImg(imgId)
   renderMeme()
   toggleContiner(true)
-  document.querySelector('.image-continer').style.display='none'
-  // document.querySelector('.image-continer').hidden= false
+  document.querySelector('.image-continer').style.display = 'none'
 }
 
 function onMoveLineDown() {
   moveLineDown(gSelectedLineIdx)
   renderMeme()
 }
+
 function onMoveLineUp() {
   moveLineUp(gSelectedLineIdx)
   renderMeme()
 }
+
 function onMoveLineRight() {
   moveLineRight(gSelectedLineIdx)
   renderMeme()
 }
+
 function onMoveLineLeft() {
   moveLineLeft(gSelectedLineIdx)
   renderMeme()
 }
+
 function onSwitch() {
   SwitchLines(gSelectedLineIdx)
   renderMeme()
 }
+
 function toggleContiner(isHide) {
   document.querySelector('.canvas-container').hidden = !isHide
-  // document.querySelector('.image-continer').hidden = isHide
   renderGallery()
 }
+
 function toggleInputs(isHidden) {
   document.querySelector('.second-line').hidden = isHidden
 }
@@ -206,33 +199,22 @@ function addRow() {
   const font = document.querySelector('.font').value
   const textSize = document.querySelector('.font-size').value
   const textColor = document.querySelector('.color').value
-  addingRow(text,font,textSize,textColor)
-  gSelectedLineIdx=1
+  addingRow(text, font, textSize, textColor)
+  gSelectedLineIdx = 1
   renderMeme()
-  // let currMeme = getMeme()
-  // drawText(300, 300, currMeme.lines[0].textSize, currMeme.lines[0].color, txt, currMeme.lines[0].font)
   console.log('text', text)
 }
 
 var gIsHidden = false
-function onAbout(){
-  // gIsHidden = false
+function onAbout() {
   document.querySelector('.about').hidden = gIsHidden
-   gIsHidden = true
-  
- 
- 
+  gIsHidden = true
 }
+
 var imgs = getImgs()
-console.log('imgs',imgs)
 
 function onSearch(val) {
   var search = document.querySelector('.search').value
-  // console.log('val',val)
-  // console.log('search', search)
-  // let imgs = getImgs()
-  console.log('imgs', imgs)
-  imgs = searchImg(search)
-  console.log('imgs',imgs)
+ imgs = searchImg(search)
   renderGallery()
 }

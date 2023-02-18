@@ -21,8 +21,9 @@ function loadImageFromInput(ev, onImageReady) {
 
 function renderImg(img) {
   // Draw the img on the canvas
+  saveImgInMeme(img)
   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-  return img
+  // return img
   // let currMeme = getMeme()
   // img = currMeme
 }
