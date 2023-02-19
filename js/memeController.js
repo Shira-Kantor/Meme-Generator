@@ -81,7 +81,7 @@ function drawText(x, y, size, color, txt, font) {
   gCtx.strokeStyle = 'black'
   gCtx.fillStyle = color
   gCtx.font = `${size}px ${font}`
-  gCtx.textAlign = 'center'
+  gCtx.textAlign = 'rigth'
   gCtx.textBaseline = 'top'
 
   gCtx.fillText(txt, x, y) // Draws (fills) a given text at the given (x, y) position.
@@ -111,12 +111,8 @@ function onSelectes(selectedLine) {
 // }
 
 function clearCanvas() {
-
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-
-
-  // renderGallery()
-  // renderMeme()
+  toggleContiner(false)
 }
 
 function renderMeme() {
@@ -127,19 +123,31 @@ function renderMeme() {
 function drawImg(meme) {
   var img = new Image()
   img.src = `img/${meme.selectedImagId}.jpg`
-  
-  if (meme.img)  img = saveImgInMeme(img)
-
+console.log('img',img)
+// img = renderImg(img)
+  if (meme.img) img = saveImgInMeme(img)
+  console.log('meme.img',meme.img)
   // img.onload = () => {
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    drawText(meme.lines[0].pos.x, meme.lines[0].pos.y, meme.lines[0].textSize, meme.lines[0].textColor, meme.lines[0].txt, meme.lines[0].font)
-    drawText(meme.lines[1].pos.x, meme.lines[1].pos.y, meme.lines[1].textSize, meme.lines[1].textColor, meme.lines[1].txt, meme.lines[1].font)
+  gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+  drawText(meme.lines[0].pos.x, meme.lines[0].pos.y, meme.lines[0].textSize, meme.lines[0].textColor, meme.lines[0].txt, meme.lines[0].font)
+  drawText(meme.lines[1].pos.x, meme.lines[1].pos.y, meme.lines[1].textSize, meme.lines[1].textColor, meme.lines[1].txt, meme.lines[1].font)
+  drawRect()
+  // drawRect(meme.lines[0].pos.x-20, meme.lines[0].pos.y-20, gCtx.measureText(meme.lines[0].txt).width+20, meme.lines[0].textSize+20 )
+  // console.log('gCtx.measureText(meme.lines[0].txt)', gCtx.measureText(meme.lines[0].txt).width)
+
   // }
 }
 
-function drawRect(x, y) {
+function drawRect() {
+  // if (!gSelectedLineIdx) return
+  let meme= getMeme()
+  let x = +meme.lines[gSelectedLineIdx].pos.x - 20
+  let y = +meme.lines[gSelectedLineIdx].pos.y - 20
+  let w = +gCtx.measureText(meme.lines[gSelectedLineIdx].txt).width + 40
+  let h = +meme.lines[gSelectedLineIdx].textSize + 30
+  console.log('h',h)
   gCtx.strokeStyle = 'black'
-  gCtx.strokeRect(x, y, x + 10, y)
+  gCtx.strokeRect(x, y, w, h)
 }
 
 function renderGallery() {
@@ -157,6 +165,8 @@ function onImgSelect(imgId) {
   renderMeme()
   toggleContiner(true)
   document.querySelector('.image-continer').style.display = 'none'
+  document.querySelector('.search').style.display = 'none'
+  
 }
 
 function onMoveLineDown() {
@@ -185,7 +195,8 @@ function onSwitch() {
 }
 
 function toggleContiner(isHide) {
-  document.querySelector('.canvas-container').hidden = !isHide
+  document.querySelector('.canvas-container').classList.toggle('hidden')
+  document.querySelector('.search').style.display = 'inline'
   renderGallery()
 }
 

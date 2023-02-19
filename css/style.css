@@ -16,28 +16,6 @@ body {
   background-image: url("/img/bg2.jpg");
 }
 
-canvas {
-    display: block;
-    margin: auto;
-    background-color: rgb(86, 186, 216);
-    border: 1px solid black;
-  }
-  
-  .canvas-container {
-    background-image: url("/img/bg.jpg");
-    margin: auto;
-    width: 90vw;
-    height: 90vh;
-    position: relative;
-    
-  }
-  .canvas-container p {
-    position: absolute;
-    color: white;
-    font-size: 36px;
-    text-align: center;
-    width: 100%;
-  }
 
 
 a {
@@ -67,9 +45,20 @@ img{
     width: 320px;
     border-radius: 20px;
 }
-.nav-bar{
-  display: grid;
-  justify-content: space-evenly;
-  justify-items: center;
 
+.txt-inputs-container{
+  text-align: center;
+  margin: 10px;
+  /* display: flex; */
+  /* margin: auto; */
+/* gap: 10px; */
+}
+
+footer {
+ 
+
+}
+
+.hidden {
+  display: none;
 }

@@ -5,44 +5,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/bottun.css" />
+    <link rel="stylesheet" href="css/main.css" />
+   
     <title>Meme Generator</title>
 </head>
 
 <body onload="onInit()">
-    <h1>Meme Generator</h1>
-    <nav>
+    <nav class="main-header">
+       <h3 class="title" onclick="toggleContiner(false)">Meme Generator</h3>
         <!-- <button>Logo</button> -->
-        <button onclick="toggleContiner(false)">Main</button>
-        <button onclick="onAbout()">About</button>
-        <input class="search" type="search" name="search-meme" placeholder="search meme" oninput="onSearch(this.value)"/>
-    </nav>
+        <div class="main-nav"> <button onclick="toggleContiner(false)">Main</button>
+            <button onclick="onAbout()">About</button>
+            <input class="search" type="search" name="search-meme" placeholder="search meme" oninput="onSearch(this.value)"/>
+       </div>
+         </nav>
     <p class="about" hidden>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut enim minus consequatur voluptas, autem cumque optio tempore ratione
         blanditiis, odio perferendis sed fugiat eveniet cupiditate illo sunt vel ad repellat rerum accusamus nisi asperiores obcaecati.
          Perferendis vel laboriosam deleniti unde consequatur earum vero nulla obcaecati! Deleniti eligendi debitis et eos accusantium 
          totam nam optio, facere impedit cum, fuga placeat, id repellat laudantium? Dolore, fugit repellendus dolorem nulla illum eveniet
           sapiente, provident, esse cumque
         eum similique ipsum consequuntur dignissimos adipisci qui reprehenderit pariatur ea dicta velit voluptas aut atque maxime distinctio.</p>
-    <div class="canvas-container" hidden>
+    <div class="canvas-container hidden">
         <div class="nav-bar">
             <section class="txt-inputs-container" oninput="getTxtInfo()">
                 </select>
-                <label for="txt">Enter a txt</label>
+                <label for="txt">Enter a text</label>
                 <input onclick="onSelectes(0)" type="text" name="txt" id="txt" placeholder="txt" class="txt" />
              
                     <button class="add-line" onclick="toggleInputs(false)">+</button>
                     <section class="second-line" hidden>
                         <label for="new-txt">Enter more txt</label>
                         <input  onclick="onSelectes(1)" oninput="addRow()" type="text" name="new-txt" id="new-txt" placeholder="new-txt" class="new-txt" />
-                        <button class="switch-lines" onclick="onSwitch()"> ↕ </button>
+                        <button class="switch-lines" onclick="onSwitch()" title="switch lines"> ↕ </button>
                     </section>
                     <br>
-                    <button class="move-txt" onclick="onMoveLineDown()">↓</button>
-                    <button class="move-txt" onclick="onMoveLineUp()">↑</button>
-                    <button class="move-txt" onclick="onMoveLineRight()">→</button>
-                    <button class="move-txt" onclick="onMoveLineLeft()"> ← </button>
-                <label for="font">Enter a font</label>
+                    <button class="move-txt" onclick="onMoveLineDown()" title="move down">↓</button>
+                    <button class="move-txt" onclick="onMoveLineUp()" title="move up">↑</button>
+                    <button class="move-txt" onclick="onMoveLineRight()" title="move right">→</button>
+                    <button class="move-txt" onclick="onMoveLineLeft()" title="move left"> ← </button>
+                <label for="font">Pick a font</label>
                 <select name="selectFont" id="font" placeholder="font" class="font">
                     <option value="Impact">Impact</option>
                     <option value="Arial">Arial</option>
@@ -58,15 +59,15 @@
                 <label for="font-size">Enter a font size</label>
                 <input type="number" name="font-size" id="font-size" placeholder="font-size" class="font-size"
                     value="60" />
-                <input type="color" name="color" id="color" class="color" value='#ffffff' />
+                <input type="color" name="color" id="color" class="color" value='#ffffff' title="color"/>
 
                 <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
-                <button class="btn" onclick="onUploadImg(event)">Upload Image</button>
-                <button class="clear-btn" onclick="onClearText()">Clear</button>
-                <button onclick="saveCanvas()">Save</button>
-                <button onclick="clearCanvas()">❌</button>
+                <button class="btn" onclick="onUploadImg(event)" title="upload">Upload Image</button>
+                <button class="clear-btn" onclick="onClearText()" title="clear text">Clear</button>
+                <!-- <button onclick="saveCanvas()" title="save">Save</button> -->
+                <button onclick="clearCanvas()" title="clear canvas">❌</button>
                 <!-- when click the link run downloadCanvas -->
-                <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>
+                <a href="#" onclick="downloadCanvas(this)" download="file-name" title="Download">Download</a>
             </section>
         </div>
         <canvas id="my-canvas" height="700" width="700"> </canvas>
@@ -74,6 +75,9 @@
     </div>
     <div class="image-continer">
     </div>
+
+    <footer> ©Shira Kantor - 2023 </footer>
+
     <script src="js/memeService.js"></script>
     <script src="js/memeController.js"></script>
     <script src="js/loadFromInput.js"></script>

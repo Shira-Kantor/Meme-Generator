@@ -1,0 +1,35 @@
+
+canvas {
+    display: block;
+    margin: auto;
+    background-color: rgb(86, 186, 216);
+    border: 1px solid black;
+  }
+  
+  .canvas-container {
+    background-image: url("/img/bg.jpg");
+    margin: auto;
+    width: 90vw;
+    height: 90vh;
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    /* display: grid; */
+    
+  }
+  .canvas-container p {
+    position: absolute;
+    color: white;
+    font-size: 36px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .nav-bar {
+    display: grid;
+  }
+  
+  .hidden {
+    display: none;
+  }

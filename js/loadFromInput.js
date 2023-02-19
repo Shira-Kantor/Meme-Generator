@@ -17,20 +17,21 @@ function loadImageFromInput(ev, onImageReady) {
     // img.onload = () => onImageReady(img)
   }
   reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
+  
 }
 
 function renderImg(img) {
   // Draw the img on the canvas
-  let meme = getMeme()
+  // let meme = getMeme()
 
-  // img.onload = () => {
-  gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-  drawText(meme.lines[0].pos.x, meme.lines[0].pos.y, meme.lines[0].textSize, meme.lines[0].textColor, meme.lines[0].txt, meme.lines[0].font)
-  drawText(meme.lines[1].pos.x, meme.lines[1].pos.y, meme.lines[1].textSize, meme.lines[1].textColor, meme.lines[1].txt, meme.lines[1].font)
-  // }
+  // // img.onload = () => {
   // gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-  saveImgInMeme(img)
+  // drawText(meme.lines[0].pos.x, meme.lines[0].pos.y, meme.lines[0].textSize, meme.lines[0].textColor, meme.lines[0].txt, meme.lines[0].font)
+  // drawText(meme.lines[1].pos.x, meme.lines[1].pos.y, meme.lines[1].textSize, meme.lines[1].textColor, meme.lines[1].txt, meme.lines[1].font)
+  // // }
+  gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+  // saveImgInMeme(img)
 
-  // return img
+  return img
   // img = currMeme
 }
