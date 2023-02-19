@@ -28,8 +28,15 @@ canvas {
 
   .nav-bar {
     display: grid;
+    margin-left: 3em;
   }
 
   .hidden {
     display: none;
   }
+  /* .txt-inputs-container{
+    display: flex;
+    align-content: stretch;
+    justify-content: center;
+    align-items: center;
+  } */
