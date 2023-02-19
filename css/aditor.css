@@ -7,7 +7,7 @@ canvas {
   }
   
   .canvas-container {
-    background-image: url("/img/bg.jpg");
+    background-image: url("img/bg.jpg");
     margin: auto;
     width: 90vw;
     height: 90vh;
@@ -29,7 +29,7 @@ canvas {
   .nav-bar {
     display: grid;
   }
-  
+
   .hidden {
     display: none;
   }
